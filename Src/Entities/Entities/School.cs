@@ -16,8 +16,7 @@ namespace Entities
         public string Address { get; set; }
 
         public string Description { get; set; }
-
-        //[NotMapped]
+        
         public virtual List<StudentSchool> StudentSchools { get; set; }
     }
 }

@@ -18,11 +18,9 @@ namespace Entities
         public DateTime? GraduationTime { get; set; }
 
         [ForeignKey("StudentId")]
-        //[NotMapped]
         public virtual Student Student { get; set; }
 
         [ForeignKey("SchoolId")]
-        //[NotMapped]
         public virtual School School { get; set; }
     }
 }

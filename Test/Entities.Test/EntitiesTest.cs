@@ -11,7 +11,7 @@ namespace Entities.Test
     public class EntitiesTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethod()
         {
             var studentId = Guid.NewGuid();
             var scoreId = Guid.NewGuid();

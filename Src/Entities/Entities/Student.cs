@@ -19,11 +19,9 @@ namespace Entities
         public string Name { get; set; }
 
         public Grade Grade { get; set; }
-
-        //[NotMapped]
+        
         public virtual IList<Score> Scores { get; set; }
-
-        //[NotMapped]
+        
         public virtual List<StudentSchool> StudentSchools { get; set; }
     }
 

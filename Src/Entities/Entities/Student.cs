@@ -19,7 +19,7 @@ namespace Entities
         public string Name { get; set; }
 
         public Grade Grade { get; set; }
-
+        
         public virtual IList<Score> Scores { get; set; }
 
         public virtual List<StudentSchool> StudentSchools { get; set; }

@@ -13,10 +13,14 @@ namespace Entities
         public Score()
         {
         }
+
+        [Required]
+        public int ScoreSum { get; set; }
+
         public int? ScoreEnglish { get; set; }
+
         public int? ScoreMath { get; set; }
 
-        [Required, Column("StudentId")]
         public Guid StudentId { get; set; }
 
 

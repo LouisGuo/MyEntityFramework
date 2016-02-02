@@ -15,6 +15,8 @@ namespace Entities
         [Key, Column(Order = 10)]
         public Guid SchoolId { get; set; }
 
+        public DateTime? GraduationTime { get; set; }
+
         [ForeignKey("StudentId")]
         public virtual Student Student { get; set; }
 

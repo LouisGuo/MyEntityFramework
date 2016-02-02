@@ -15,8 +15,6 @@ namespace Entities.Test
         {
             using (var ssaDbContext = new SSADbContext())
             {
-                var ss = from s in ssaDbContext.Students select s;
-                var ssCount = ss.Count();
                 var student = new Student
                 {
                     Id = Guid.Empty,
@@ -49,10 +47,13 @@ namespace Entities.Test
                         }
                     }
                 };
-
-
                 ssaDbContext.Students.Add(student);
                 ssaDbContext.SaveChanges();
+
+                var score = ssaDbContext.Scores.FirstOrDefault();
+                var stu = ssaDbContext.Students.FirstOrDefault();
+
+
             }
         }
 

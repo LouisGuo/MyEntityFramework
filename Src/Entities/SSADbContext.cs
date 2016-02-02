@@ -11,7 +11,7 @@ namespace Entities
     {
         static SSADbContext()
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<SSADbContext>());
+            Database.SetInitializer<SSADbContext>(new CreateDatabaseIfNotExists<SSADbContext>());
         }
         public SSADbContext() : base("name=SSADbConnStr")
         {
@@ -20,6 +20,7 @@ namespace Entities
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.HasDefaultSchema("SSA");
+           
         }
 
         public virtual DbSet<Student> Students { get; set; }

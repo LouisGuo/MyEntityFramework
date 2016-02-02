@@ -10,7 +10,7 @@ namespace Entities
 
     public abstract class IdentityEntityBase : EntityCommon
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid Id { get; set; }
 
     }

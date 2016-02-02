@@ -25,8 +25,8 @@ namespace Entities
 
 
         [ForeignKey("StudentId")]
+        //[NotMapped]
         public virtual Student Student { get; set; }
-
 
     }
 }

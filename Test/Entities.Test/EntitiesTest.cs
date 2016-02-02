@@ -13,19 +13,19 @@ namespace Entities.Test
         [TestMethod]
         public void TestMethod1()
         {
-            using (var ssaDbContext = new SSADbContext())
+            var studentId = Guid.NewGuid();
+            var scoreId = Guid.NewGuid();
+            var student = new Student
             {
-                var student = new Student
-                {
-                    Id = Guid.Empty,
-                    Name = "asdd by controller",
-                    Grade = Grade.MiddleSchool,
-                    Scores = new List<Score>
+                Id = studentId,
+                Name = "asdd by controller",
+                Grade = Grade.MiddleSchool,
+                Scores = new List<Score>
                     {
-                        new Score { Id=Guid.NewGuid(),ScoreEnglish = 99 },
-                        new Score { Id=Guid.NewGuid() }
+                        new Score { Id=scoreId,ScoreEnglish = 99,StudentId=studentId },
+                        new Score { Id=Guid.NewGuid(),StudentId=studentId }
                     },
-                    StudentSchools = new List<StudentSchool>
+                StudentSchools = new List<StudentSchool>
                     {
                         new StudentSchool
                         {
@@ -46,14 +46,25 @@ namespace Entities.Test
                         }
                         }
                     }
-                };
+            };
+            var score = default(IEnumerable<Score>);
+            var stu = default(IEnumerable<Student>);
+
+            using (var ssaDbContext = new SSADbContext())
+            {
+                var ss = ssaDbContext.Scores.Find(new Guid("e3757350-471f-4203-9dbb-8b673a514ae5"));
                 ssaDbContext.Students.Add(student);
+                ssaDbContext.Scores.AddRange(student.Scores);
                 ssaDbContext.SaveChanges();
 
-                var score = ssaDbContext.Scores.FirstOrDefault();
-                var stu = ssaDbContext.Students.FirstOrDefault();
+                score = ssaDbContext.Scores.Where(s => s.Id == scoreId).ToList();
+                stu = ssaDbContext.Students.Where(s => s.Id == studentId).ToList();
+            }
 
-
+            using (var ssaDbContext = new SSADbContext())
+            {
+                score = ssaDbContext.Scores.Where(s => s.Id == scoreId).ToList();
+                stu = ssaDbContext.Students.Where(s => s.Id == studentId).ToList();
             }
         }
 
